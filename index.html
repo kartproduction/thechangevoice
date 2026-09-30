@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Change Voice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Barlow+Semi+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15130f;
+    --paper:#f5f1e6;
+    --paper-dim:#eee8d8;
+    --blue:#2a4b8d;   /* elections */
+    --green:#3f6b3c;  /* environment */
+    --magenta:#b8285e;/* equality */
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#f2ede0;
+      --paper:#131210;
+      --paper-dim:#1c1a16;
+      --blue:#7fa0e6;
+      --green:#8fc189;
+      --magenta:#ea88ae;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#f2ede0;
+    --paper:#131210;
+    --paper-dim:#1c1a16;
+    --blue:#7fa0e6;
+    --green:#8fc189;
+    --magenta:#ea88ae;
+  }
+  *{box-sizing:inherit; margin:0; padding:0;}
+  html{scroll-padding-top: env(safe-area-inset-top, 0px); background:var(--paper);}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Newsreader', Georgia, 'Times New Roman', serif;
+    font-size:18px; line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Barlow Semi Condensed', Arial, sans-serif;
+    font-weight:800; letter-spacing:0.01em; line-height:1.02;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  header.top{
+    position:sticky; top:0; z-index:20; background:var(--paper);
+    border-bottom:1px solid rgba(21,19,15,0.15);
+  }
+  header.top .inner{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 28px; max-width:920px; margin:0 auto;
+  }
+  .wordmark{font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:1.05rem; text-decoration:none;}
+  nav.menu{ display:flex; align-items:center; gap:26px; }
+  nav.menu a{
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:600; font-size:0.95rem;
+    text-decoration:none; padding-bottom:2px; border-bottom:1px solid transparent;
+  }
+  nav.menu a:hover, nav.menu a:focus-visible{ border-bottom-color:var(--ink); }
+  .theme-toggle{
+    background:none; border:2px solid var(--ink); color:var(--ink); font-family:'Barlow Semi Condensed',sans-serif;
+    font-weight:700; padding:0; cursor:pointer; font-size:1.1rem; line-height:1; width:36px; height:36px;
+    display:flex; align-items:center; justify-content:center; border-radius:50%; margin-left:6px;
+  }
+  .theme-toggle:focus-visible{ outline:3px solid var(--blue); outline-offset:2px; }
+  .menu-toggle{
+    display:none; background:none; border:2px solid var(--ink); color:var(--ink); font-family:'Barlow Semi Condensed',sans-serif;
+    font-weight:700; padding:7px 12px; cursor:pointer;
+  }
+  @media (max-width: 720px){
+    nav.menu{
+      position:absolute; top:100%; left:0; right:0; background:var(--paper);
+      flex-direction:column; align-items:flex-start; gap:0; padding:8px 28px 18px;
+      border-bottom:1px solid rgba(21,19,15,0.15); display:none;
+    }
+    nav.menu.open{ display:flex; }
+    nav.menu a{ padding:10px 0; width:100%; border-bottom:1px solid rgba(21,19,15,0.1); }
+    nav.menu .theme-toggle{ margin:12px 0 4px; }
+    .menu-toggle{ display:block; }
+  }
+
+  .hero{ padding:60px 28px 70px; max-width:920px; margin:0 auto; }
+  .hero .kicker{
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:0.95rem;
+  }
+  .hero .kicker span{ padding:2px 8px; border-radius:2px; color:var(--paper); margin-right:6px; display:inline-block;}
+  .hero .kicker span.b{background:var(--blue);}
+  .hero .kicker span.g{background:var(--green);}
+  .hero .kicker span.m{background:var(--magenta);}
+  .hero h1{
+    font-size:clamp(2.6rem, 9vw, 5.2rem); margin:18px 0 26px; max-width:14ch;
+  }
+  .hero p{ max-width:52ch; font-size:1.15rem; }
+  .hero .ctas{ margin-top:32px; display:flex; gap:18px; flex-wrap:wrap; }
+  .btn{
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:1rem;
+    padding:12px 22px; border:2px solid var(--ink); text-decoration:none;
+    background:transparent; cursor:pointer;
+  }
+  .btn.solid{ background:var(--ink); color:var(--paper); }
+  .btn:focus-visible{ outline:3px solid var(--blue); outline-offset:2px; }
+
+  section.projects{ background:var(--ink); color:var(--paper); padding:64px 0 80px; }
+  section.projects .wrap > h2{
+    font-size:clamp(1.6rem,4vw,2.1rem); margin-bottom:8px;
+  }
+  section.projects .wrap > p{ opacity:0.75; max-width:56ch; margin-bottom:46px; }
+
+  .plank{
+    border-top:1px solid rgba(245,241,230,0.25);
+    padding:34px 0; display:grid; grid-template-columns: 100px 1fr; gap:24px;
+  }
+  .plank:last-child{ border-bottom:1px solid rgba(245,241,230,0.25); }
+  .plank .tag{
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:0.85rem;
+    align-self:start; padding:5px 0;
+  }
+  .plank h3{ font-size:clamp(1.6rem,4vw,2.2rem); margin-bottom:6px; }
+  .plank .sub{ font-family:'Barlow Semi Condensed',sans-serif; font-weight:600; opacity:0.7; margin-bottom:10px; font-size:1rem;}
+  .plank p{ max-width:58ch; opacity:0.92; }
+  .plank.blue{ border-left:6px solid var(--blue); }
+  .plank.green{ border-left:6px solid var(--green); }
+  .plank.magenta{ border-left:6px solid var(--magenta); }
+  .plank.blue .tag{ color:#8fa8e0; }
+  .plank.green .tag{ color:#9bc496; }
+  .plank.magenta .tag{ color:#ea9cb8; }
+  .plank{ padding-left:18px; }
+
+  section.about{ padding:70px 28px; max-width:920px; margin:0 auto; }
+  section.about h2{ font-size:clamp(1.6rem,4vw,2.1rem); margin-bottom:18px; }
+  section.about p{ max-width:58ch; }
+
+  section.join{ background:var(--paper-dim); padding:60px 28px; }
+  section.join .wrap{ display:flex; flex-wrap:wrap; gap:32px; justify-content:space-between; align-items:flex-end; }
+  section.join h2{ font-size:clamp(1.5rem,4vw,2rem); max-width:14ch; }
+  form.mail{ display:flex; gap:0; flex-wrap:wrap; max-width:420px; flex:1; }
+  form.mail input[type=email]{
+    flex:1; min-width:180px; padding:13px 14px; border:2px solid var(--ink); border-right:none;
+    font-family:'Newsreader',serif; font-size:1rem; background:var(--paper);
+  }
+  form.mail button{
+    border:2px solid var(--ink); background:var(--ink); color:var(--paper);
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; padding:0 20px; cursor:pointer;
+  }
+  form.mail button:focus-visible, form.mail input:focus-visible{ outline:3px solid var(--blue); outline-offset:1px; }
+
+  footer{ padding:40px 28px 60px; max-width:920px; margin:0 auto; }
+  footer .links{ display:flex; gap:20px; flex-wrap:wrap; margin-bottom:18px; }
+  footer .links a{ font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:0.9rem; text-decoration:none; border-bottom:1px solid var(--ink); }
+  footer small{ opacity:0.65; font-size:0.85rem; }
+
+  @media (max-width: 600px){
+    .plank{ grid-template-columns: 1fr; gap:6px; }
+    header.top{ flex-direction:column; gap:12px; align-items:flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce){ * { scroll-behavior:auto !important; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="wordmark" href="#top">The Change Voice</a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav class="menu" id="siteNav">
+      <a href="#top">Home</a>
+      <a href="https://kartproduction.github.io/kart/">Kart Production</a>
+      <a href="#projects">The Change Voice</a>
+      <a href="#blog">Blog</a>
+      <a href="#about">About</a>
+      <a href="#join">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <p class="kicker"><span class="b">Elections</span><span class="g">Environment</span><span class="m">Equality</span></p>
+  <h1>A voice for the change we haven't made yet.</h1>
+  <p>The Change Voice runs four youth-driven projects, each built around one thing worth raising your voice for: who we vote for, the planet we live on, and the people we owe respect.</p>
+  <div class="ctas">
+    <a class="btn solid" href="#projects">See the projects</a>
+    <a class="btn" href="#join">Join the mailing list</a>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="wrap">
+    <h2>Four projects, one mission</h2>
+    <p>Independent efforts, run by young organizers, aimed at the same goal — a more informed, more sustainable, more equal country.</p>
+
+    <div class="plank blue">
+      <div class="tag">Elections</div>
+      <div>
+        <h3>2020, 20Twenty &amp; Beyond</h3>
+        <div class="sub">Vote for vision, vote for reason</div>
+        <p>Empowering American youth to take part in local and federal elections by getting to know the candidates and their ideas. We believe informed voting is crucial to a healthy democracy and that every vote counts — so through our website, social media channels, and community events, we educate and mobilize young voters across the country.</p>
+      </div>
+    </div>
+
+    <div class="plank green">
+      <div class="tag">Environment</div>
+      <div>
+        <h3>SAVE</h3>
+        <div class="sub">Sun · Air · Vapor · Earth</div>
+        <p>A campaign for environmental awareness — promoting the everyday habits and green practices that keep the planet livable for the generations coming after us.</p>
+      </div>
+    </div>
+
+    <div class="plank magenta">
+      <div class="tag">Equality</div>
+      <div>
+        <h3>WAR</h3>
+        <div class="sub">Who Are Result — a message against hate</div>
+        <p>A platform standing against hate and racism. WAR holds that everyone deserves respect and equality regardless of race, ethnicity, or background, and works to spread that message everywhere it can.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="blog" style="padding-top:56px;">
+  <div class="wrap">
+    <h2>From the blog</h2>
+    <p>One feed for all four projects — Elections, SAVE, and WAR.</p>
+
+    <!--
+      To add a new post: copy one .plank block below, edit the tag/title/
+      author/date/paragraph/link, and paste it above or below the others.
+      Project tag classes: "plank blue" = Elections, "plank green" = SAVE,
+      "plank magenta" = WAR.
+    -->
+    <div id="blogPosts">
+      <div class="plank blue">
+        <div class="tag">Elections · 20Twenty &amp; Beyond · Feb 2020</div>
+        <div>
+          <h3>The Importance of Voting and Making Your Voice Heard</h3>
+          <div class="sub">Khada N. Acharya</div>
+          <p>Writing as a former refugee turned U.S. citizen, Khada makes the case for registering and voting in every election — and for taking the time to actually learn where each candidate stands before casting a ballot.</p>
+          <a class="btn" style="margin-top:14px; display:inline-block; border-color:var(--paper); color:var(--paper);" href="why-you-should-vote.html">Read the post</a>
+        </div>
+      </div>
+      <div class="plank blue">
+        <div class="tag">Elections · 20Twenty &amp; Beyond · Jan 2019</div>
+        <div>
+          <h3>The Importance of Voting in a Democratic Society</h3>
+          <div class="sub">Khada N. Acharya</div>
+          <p>A short breakdown of what's actually on the line when you skip an election: who decides how your tax dollars get spent, and whether the causes you care about get a seat at the table.</p>
+          <a class="btn" style="margin-top:14px; display:inline-block; border-color:var(--paper); color:var(--paper);" href="important-of-vote.html">Read the post</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2>About us</h2>
+  <p>The Change Voice is a community of young organizers who believe that real change starts with people willing to speak up — at the ballot box, in their neighborhoods, and against hate wherever they find it. Join us on social media to follow what each project is doing next.</p>
+</section>
+
+<section class="join" id="join">
+  <div class="wrap">
+    <div>
+      <h2>Get in touch</h2>
+      <p style="max-width:34ch; margin-top:10px;">Questions, press, or want to get involved with one of the four projects? Reach us by email at <a href="mailto:khadanacharya@gmail.com">khadanacharya@gmail.com</a> or on social media.</p>
+    </div>
+    <form class="mail" id="subscribeForm">
+      <label for="email" style="position:absolute; left:-9999px;">Email address</label>
+      <input id="email" name="email" type="email" placeholder="you@email.com" required>
+      <!-- honeypot for spam bots -->
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <button type="submit">Subscribe</button>
+      <p id="subscribeMsg" role="status" style="flex-basis:100%; margin-top:8px; font-size:0.95rem;"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="links">
+    <a href="https://www.facebook.com/thechangevoice">Facebook</a>
+    <a href="https://www.instagram.com/thechangevoice/">Instagram</a>
+    <a href="https://x.com/khadanacharya">Twitter</a>
+    <a href="https://www.youtube.com/@thechangevoice">YouTube</a>
+    <a href="https://kartproduction.wixsite.com/kart">Kart Production</a>
+  </div>
+  <small>&copy; 2026 The Change Voice, a Kart Production project.</small>
+</footer>
+
+<script>
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('siteNav');
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A' && nav.classList.contains('open')){
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  var themeBtn = document.getElementById('themeToggle');
+  var root = document.documentElement;
+  function applyThemeLabel(){
+    var mode = root.getAttribute('data-theme');
+    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = mode === 'dark' || (!mode && systemDark);
+    themeBtn.textContent = isDark ? '☀' : '☾';
+  }
+  try {
+    var saved = localStorage.getItem('tcv-theme');
+    if(saved === 'dark' || saved === 'light'){ root.setAttribute('data-theme', saved); }
+  } catch(e){}
+  applyThemeLabel();
+  themeBtn.addEventListener('click', function(){
+    var current = root.getAttribute('data-theme');
+    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var currentlyDark = current === 'dark' || (!current && systemDark);
+    var next = currentlyDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('tcv-theme', next); } catch(e){}
+    applyThemeLabel();
+  });
+
+  // Paste your Google Apps Script Web App URL between the quotes below
+  var SUBSCRIBE_URL = 'https://script.google.com/macros/s/AKfycbzcE6Y_d3CBKC0NHmpIrqKrsg2p6Q_O4VrbnkFqZcjp60i--j27GZfwYhBIxTKshpE9ng/exec';
+
+  var subForm = document.getElementById('subscribeForm');
+  var subMsg = document.getElementById('subscribeMsg');
+  subForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = subForm.querySelector('button');
+    var email = subForm.querySelector('input[name="email"]').value;
+    if(subForm.querySelector('input[name="_honey"]').value){ return; }
+    btn.disabled = true; btn.textContent = 'Sending…'; subMsg.textContent = '';
+    var body = new URLSearchParams(); body.append('email', email);
+    fetch(SUBSCRIBE_URL, { method: 'POST', mode: 'no-cors', body: body })
+    .then(function(){
+      btn.textContent = 'Subscribed'; subMsg.textContent = 'Thank you for subscribing!'; subForm.reset();
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = 'Subscribe';
+      subMsg.textContent = 'Something went wrong. Please try again or email us at khadanacharya@gmail.com.';
+    });
+  });
+</script>
+</body>
+</html>
