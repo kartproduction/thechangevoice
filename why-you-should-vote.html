@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Importance of Voting and Making Your Voice Heard | The Change Voice</title>
+<meta name="description" content="As a former refugee, now a citizen of the United States, Khada N. Acharya urges everyone to register, get informed, and vote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Barlow+Semi+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15130f;
+    --paper:#f5f1e6;
+    --paper-dim:#eee8d8;
+    --blue:#2a4b8d;   /* elections */
+    --green:#3f6b3c;  /* environment */
+    --magenta:#b8285e;/* equality */
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#f2ede0;
+      --paper:#131210;
+      --paper-dim:#1c1a16;
+      --blue:#7fa0e6;
+      --green:#8fc189;
+      --magenta:#ea88ae;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#f2ede0;
+    --paper:#131210;
+    --paper-dim:#1c1a16;
+    --blue:#7fa0e6;
+    --green:#8fc189;
+    --magenta:#ea88ae;
+  }
+  *{box-sizing:inherit; margin:0; padding:0;}
+  html{scroll-padding-top: env(safe-area-inset-top, 0px); background:var(--paper);}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Newsreader', Georgia, 'Times New Roman', serif;
+    font-size:18px; line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Barlow Semi Condensed', Arial, sans-serif;
+    font-weight:800; letter-spacing:0.01em; line-height:1.02;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  header.top{
+    position:sticky; top:0; z-index:20; background:var(--paper);
+    border-bottom:1px solid rgba(21,19,15,0.15);
+  }
+  header.top .inner{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 28px; max-width:920px; margin:0 auto;
+  }
+  .wordmark{font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:1.05rem; text-decoration:none;}
+  nav.menu{ display:flex; align-items:center; gap:26px; }
+  nav.menu a{
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:600; font-size:0.95rem;
+    text-decoration:none; padding-bottom:2px; border-bottom:1px solid transparent;
+  }
+  nav.menu a:hover, nav.menu a:focus-visible{ border-bottom-color:var(--ink); }
+  .theme-toggle{
+    background:none; border:2px solid var(--ink); color:var(--ink); font-family:'Barlow Semi Condensed',sans-serif;
+    font-weight:700; padding:0; cursor:pointer; font-size:1.1rem; line-height:1; width:36px; height:36px;
+    display:flex; align-items:center; justify-content:center; border-radius:50%; margin-left:6px;
+  }
+  .theme-toggle:focus-visible{ outline:3px solid var(--blue); outline-offset:2px; }
+  .menu-toggle{
+    display:none; background:none; border:2px solid var(--ink); color:var(--ink); font-family:'Barlow Semi Condensed',sans-serif;
+    font-weight:700; padding:7px 12px; cursor:pointer;
+  }
+  @media (max-width: 720px){
+    nav.menu{
+      position:absolute; top:100%; left:0; right:0; background:var(--paper);
+      flex-direction:column; align-items:flex-start; gap:0; padding:8px 28px 18px;
+      border-bottom:1px solid rgba(21,19,15,0.15); display:none;
+    }
+    nav.menu.open{ display:flex; }
+    nav.menu a{ padding:10px 0; width:100%; border-bottom:1px solid rgba(21,19,15,0.1); }
+    nav.menu .theme-toggle{ margin:12px 0 4px; }
+    .menu-toggle{ display:block; }
+  }
+
+  .hero{ padding:60px 28px 70px; max-width:920px; margin:0 auto; }
+  .hero .kicker{
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:0.95rem;
+  }
+  .hero .kicker span{ padding:2px 8px; border-radius:2px; color:var(--paper); margin-right:6px; display:inline-block;}
+  .hero .kicker span.b{background:var(--blue);}
+  .hero .kicker span.g{background:var(--green);}
+  .hero .kicker span.m{background:var(--magenta);}
+  .hero h1{
+    font-size:clamp(2.6rem, 9vw, 5.2rem); margin:18px 0 26px; max-width:14ch;
+  }
+  .hero p{ max-width:52ch; font-size:1.15rem; }
+  .hero .ctas{ margin-top:32px; display:flex; gap:18px; flex-wrap:wrap; }
+  .btn{
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:1rem;
+    padding:12px 22px; border:2px solid var(--ink); text-decoration:none;
+    background:transparent; cursor:pointer;
+  }
+  .btn.solid{ background:var(--ink); color:var(--paper); }
+  .btn:focus-visible{ outline:3px solid var(--blue); outline-offset:2px; }
+
+  section.projects{ background:var(--ink); color:var(--paper); padding:64px 0 80px; }
+  section.projects .wrap > h2{
+    font-size:clamp(1.6rem,4vw,2.1rem); margin-bottom:8px;
+  }
+  section.projects .wrap > p{ opacity:0.75; max-width:56ch; margin-bottom:46px; }
+
+  .plank{
+    border-top:1px solid rgba(245,241,230,0.25);
+    padding:34px 0; display:grid; grid-template-columns: 100px 1fr; gap:24px;
+  }
+  .plank:last-child{ border-bottom:1px solid rgba(245,241,230,0.25); }
+  .plank .tag{
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:0.85rem;
+    align-self:start; padding:5px 0;
+  }
+  .plank h3{ font-size:clamp(1.6rem,4vw,2.2rem); margin-bottom:6px; }
+  .plank .sub{ font-family:'Barlow Semi Condensed',sans-serif; font-weight:600; opacity:0.7; margin-bottom:10px; font-size:1rem;}
+  .plank p{ max-width:58ch; opacity:0.92; }
+  .plank.blue{ border-left:6px solid var(--blue); }
+  .plank.green{ border-left:6px solid var(--green); }
+  .plank.magenta{ border-left:6px solid var(--magenta); }
+  .plank.blue .tag{ color:#8fa8e0; }
+  .plank.green .tag{ color:#9bc496; }
+  .plank.magenta .tag{ color:#ea9cb8; }
+  .plank{ padding-left:18px; }
+
+  section.about{ padding:70px 28px; max-width:920px; margin:0 auto; }
+  section.about h2{ font-size:clamp(1.6rem,4vw,2.1rem); margin-bottom:18px; }
+  section.about p{ max-width:58ch; }
+
+  section.join{ background:var(--paper-dim); padding:60px 28px; }
+  section.join .wrap{ display:flex; flex-wrap:wrap; gap:32px; justify-content:space-between; align-items:flex-end; }
+  section.join h2{ font-size:clamp(1.5rem,4vw,2rem); max-width:14ch; }
+  form.mail{ display:flex; gap:0; flex-wrap:wrap; max-width:420px; flex:1; }
+  form.mail input[type=email]{
+    flex:1; min-width:180px; padding:13px 14px; border:2px solid var(--ink); border-right:none;
+    font-family:'Newsreader',serif; font-size:1rem; background:var(--paper);
+  }
+  form.mail button{
+    border:2px solid var(--ink); background:var(--ink); color:var(--paper);
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; padding:0 20px; cursor:pointer;
+  }
+  form.mail button:focus-visible, form.mail input:focus-visible{ outline:3px solid var(--blue); outline-offset:1px; }
+
+  footer{ padding:40px 28px 60px; max-width:920px; margin:0 auto; }
+  footer .links{ display:flex; gap:20px; flex-wrap:wrap; margin-bottom:18px; }
+  footer .links a{ font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:0.9rem; text-decoration:none; border-bottom:1px solid var(--ink); }
+  footer small{ opacity:0.65; font-size:0.85rem; }
+
+  @media (max-width: 600px){
+    .plank{ grid-template-columns: 1fr; gap:6px; }
+    header.top{ flex-direction:column; gap:12px; align-items:flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce){ * { scroll-behavior:auto !important; } }
+
+  article.post{ max-width:720px; margin:0 auto; padding:56px 28px 40px; }
+  article.post .tag{ font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:0.9rem; color:var(--blue); margin-bottom:14px; }
+  article.post h1{ font-size:clamp(2rem,6vw,3.2rem); margin-bottom:16px; }
+  article.post .meta{ font-family:'Barlow Semi Condensed',sans-serif; font-weight:600; opacity:0.7; margin-bottom:34px; }
+  article.post p{ margin-bottom:1.3em; font-size:1.15rem; }
+  article.post figure{ margin:30px 0; }
+  article.post .back{ display:inline-block; margin-top:20px; }
+
+  /* ---- Share + comments ---- */
+  .engage{ margin:40px 0 10px; padding-top:28px; border-top:1px solid rgba(128,128,128,0.35); }
+  .engage h2{ font-size:1.5rem; margin-bottom:10px; }
+  .engage .note{ font-size:0.95rem; opacity:0.75; margin-bottom:18px; }
+  .share{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:34px; }
+  .share strong{ font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; margin-right:4px; }
+  .share a, .share button{
+    font-family:'Barlow Semi Condensed',sans-serif; font-weight:700; font-size:0.95rem;
+    color:var(--ink); background:transparent; border:2px solid var(--ink);
+    padding:7px 14px; text-decoration:none; cursor:pointer; line-height:1.2;
+  }
+  .share a:hover, .share button:hover{ background:var(--ink); color:var(--paper); }
+  .share a:focus-visible, .share button:focus-visible{ outline:3px solid var(--blue); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="wordmark" href="index.html">The Change Voice</a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav class="menu" id="siteNav">
+      <a href="index.html">Home</a>
+      <a href="https://kartproduction.github.io/kart/">Kart Production</a>
+      <a href="index.html#projects">The Change Voice</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#join">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+    </nav>
+  </div>
+</header>
+
+<article class="post">
+  <div class="tag">Elections · 20Twenty &amp; Beyond</div>
+  <h1>The Importance of Voting and Making Your Voice Heard</h1>
+  <div class="meta">Khada N. Acharya · Feb 21, 2020 · 2 min read</div>
+
+  <p>As a former refugee, now a citizen of the United States, I have the privilege and duty of electing a president who influencing public policy. Participation in the political process affects our communities and nation today and in the future. I urge many citizens to be active citizens by registering and then regularly exercising their right to vote.</p>
+
+  <p>I also urge many citizens to spend the time needed to become informed about the issues and candidates that they will be considered as votes. I urge them by making videos about candidate visions and why they should vote that candidate and that candidate might be you. I know Trump is doing better, but we need the better candidate. The candidate that follows the rule of law. I know Trump is doing good at what he fought for it. Whether Trump is doing good or bad, he is the president and might be in 2020 unless we the people vote him out. I cannot tell Trump is bad, but people who vote him are also not bad, but we the teens are bad that we did not vote for the last election. This 2020 election, I am sure teens will vote more and that vote might go to you. Let's hope that. Lastly, I urge citizens to seek out and then uphold leaders who will act with integrity and are wise, good, and honest. As a first-time voter in Presidential Election, I am seeking to vote someone who has similar ideas as mine. Ideas about climate change, health care, minimum wages and many. Can you please tell me what are your visions of a better America and the reason why you are voting for your candidates ? Note in mind that one vote might make it different. One Vote might take out Trump and make your president. Or your candidate might be Trump and your vote might make him president once again.</p>
+
+  <figure><img src="images/why-you-should-vote.png" alt="Voting graphic" onerror="this.parentNode.style.display='none'"></figure>
+
+  <!-- ===== Share, like and comment ===== -->
+  <section class="engage" aria-label="Share, like and comment">
+    <div class="share">
+      <strong>Share this post:</strong>
+      <a href="#" id="shareFb">Facebook</a>
+      <a href="#" id="shareX">X</a>
+      <a href="#" id="shareWa">WhatsApp</a>
+      <button type="button" id="shareCopy">Copy link</button>
+    </div>
+
+    <h2>Like &amp; comment</h2>
+    <p class="note">Tap 👍 to like this post and join the conversation below. Commenting needs a free GitHub account.</p>
+    <div id="comments"></div>
+  </section>
+
+  <a class="btn back" href="index.html#blog">&larr; Back to the blog</a>
+</article>
+
+<footer>
+  <div class="links">
+    <a href="https://www.facebook.com/thechangevoice">Facebook</a>
+    <a href="https://www.instagram.com/thechangevoice/">Instagram</a>
+    <a href="https://x.com/khadanacharya">Twitter</a>
+    <a href="https://www.youtube.com/@thechangevoice">YouTube</a>
+    <a href="https://kartproduction.wixsite.com/kart">Kart Production</a>
+  </div>
+  <small>&copy; 2026 The Change Voice, a Kart Production project.</small>
+</footer>
+
+<script>
+  var toggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('siteNav');
+  toggle.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  var themeBtn = document.getElementById('themeToggle');
+  var root = document.documentElement;
+  function applyThemeLabel(){
+    var mode = root.getAttribute('data-theme');
+    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = mode === 'dark' || (!mode && systemDark);
+    themeBtn.textContent = isDark ? '☀' : '☾';
+  }
+  try {
+    var saved = localStorage.getItem('tcv-theme');
+    if(saved === 'dark' || saved === 'light'){ root.setAttribute('data-theme', saved); }
+  } catch(e){}
+  applyThemeLabel();
+  themeBtn.addEventListener('click', function(){
+    var current = root.getAttribute('data-theme');
+    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var currentlyDark = current === 'dark' || (!current && systemDark);
+    var next = currentlyDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('tcv-theme', next); } catch(e){}
+    applyThemeLabel();
+    setGiscusTheme();
+  });
+
+  /* ---- Share buttons ---- */
+  var pageUrl = location.href.split('#')[0];
+  var pageTitle = document.title;
+  function openShare(url){ window.open(url, '_blank', 'noopener,width=600,height=500'); }
+  document.getElementById('shareFb').addEventListener('click', function(e){
+    e.preventDefault();
+    openShare('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl));
+  });
+  document.getElementById('shareX').addEventListener('click', function(e){
+    e.preventDefault();
+    openShare('https://twitter.com/intent/tweet?url=' + encodeURIComponent(pageUrl) + '&text=' + encodeURIComponent(pageTitle));
+  });
+  document.getElementById('shareWa').addEventListener('click', function(e){
+    e.preventDefault();
+    openShare('https://wa.me/?text=' + encodeURIComponent(pageTitle + ' ' + pageUrl));
+  });
+  var copyBtn = document.getElementById('shareCopy');
+  copyBtn.addEventListener('click', function(){
+    function done(){ copyBtn.textContent = 'Copied!'; setTimeout(function(){ copyBtn.textContent = 'Copy link'; }, 2000); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(pageUrl).then(done, function(){ window.prompt('Copy this link:', pageUrl); });
+    } else {
+      window.prompt('Copy this link:', pageUrl);
+    }
+  });
+
+  /* ---- Likes + comments (Giscus), follows the site's light/dark toggle ---- */
+  function giscusTheme(){
+    var mode = root.getAttribute('data-theme');
+    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return (mode === 'dark' || (!mode && systemDark)) ? 'dark' : 'light';
+  }
+  function setGiscusTheme(){
+    var frame = document.querySelector('iframe.giscus-frame');
+    if(!frame) return;
+    frame.contentWindow.postMessage({ giscus: { setConfig: { theme: giscusTheme() } } }, 'https://giscus.app');
+  }
+  (function loadGiscus(){
+    var s = document.createElement('script');
+    s.src = 'https://giscus.app/client.js';
+    s.setAttribute('data-repo', 'kartproduction/thechangevoice');
+    s.setAttribute('data-repo-id', 'PASTE_REPO_ID_FROM_GISCUS');
+    s.setAttribute('data-category', 'General');
+    s.setAttribute('data-category-id', 'PASTE_CATEGORY_ID_FROM_GISCUS');
+    s.setAttribute('data-mapping', 'pathname');
+    s.setAttribute('data-strict', '0');
+    s.setAttribute('data-reactions-enabled', '1');
+    s.setAttribute('data-emit-metadata', '0');
+    s.setAttribute('data-input-position', 'top');
+    s.setAttribute('data-theme', giscusTheme());
+    s.setAttribute('data-lang', 'en');
+    s.setAttribute('crossorigin', 'anonymous');
+    s.async = true;
+    document.getElementById('comments').appendChild(s);
+  })();
+</script>
+</body>
+</html>
